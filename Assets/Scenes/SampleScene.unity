@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a086e200b8f1446b50745a3d52d14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _maxHealth: 5
 --- !u!1 &1351343586
 GameObject:
   m_ObjectHideFlags: 0

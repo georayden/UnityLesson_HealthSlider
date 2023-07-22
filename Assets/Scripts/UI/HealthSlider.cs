@@ -16,7 +16,7 @@ public class HealthSlider : MonoBehaviour
 
     private void OnEnable()
     {        
-        _targetValue = _player.Health;
+        _targetValue = _player.MaxHealth;
         _healthSlider.maxValue = _targetValue;
 
         _player.HealthChanged += OnHealthChanged;
