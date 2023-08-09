@@ -12,7 +12,7 @@ public class HealthSlider : MonoBehaviour
     private float _lastValue = 0.0f;
     private float _targetValue;
 
-    private Coroutine _changeFloatCoroutine;
+    private Coroutine _fillCoroutine;
 
     private void OnEnable()
     {        
@@ -29,25 +29,24 @@ public class HealthSlider : MonoBehaviour
 
     private void OnHealthChanged(int health)
     {
-        ChangeFloat(health);
+        Fill(health);
     }
 
-    public void ChangeFloat(int targetValue)
+    public void Fill(int targetValue)
     {
-        if(_changeFloatCoroutine != null)
+        if(_fillCoroutine != null)
         {
-            StopCoroutine(_changeFloatCoroutine);
+            StopCoroutine(_fillCoroutine);
         }
 
         _targetValue = targetValue;
 
-        _changeFloatCoroutine = StartCoroutine(ChangeFloatCoroutine());
+        _fillCoroutine = StartCoroutine(FillCoroutine());
     }
 
-    private IEnumerator ChangeFloatCoroutine()
+    private IEnumerator FillCoroutine()
     {
         float _changeValue = 0.0f;
-        var waitForFixedUpdate = new WaitForFixedUpdate();
 
         _lastValue = _healthSlider.value;        
 
@@ -57,7 +56,7 @@ public class HealthSlider : MonoBehaviour
 
             _changeValue += _changeStep * Time.deltaTime;
 
-            yield return waitForFixedUpdate;
+            yield return null;
         }        
     }
 }
